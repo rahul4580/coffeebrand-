@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import styles from "./VideoScrollOverlay.module.css";
 
@@ -47,10 +48,9 @@ export default function ScrollScaleVideo() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-[C:\Users\rahul\OneDrive\Desktop\app\my-app\public\images\zazufiane-coffee-7045578_1920.png]"
+      className="relative bg-neutral-950"
       style={{ height: "240vh" }}
       aria-label="Featured video"
-      // imagesrc={"C:\Users\rahul\OneDrive\Desktop\app\my-app\public\images\zazufiane-coffee-7045578_1920.png"}
     >
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
           <div
@@ -73,17 +73,19 @@ export default function ScrollScaleVideo() {
           >
             <video
               className="h-full w-full object-cover"
-              src="/videos/344488_medium.mp4"
+              src={VIDEO_SRC}
               muted
               playsInline
               loop
               autoPlay
               preload="auto"
             />
-            <img 
-              src="/images/zazufiane-coffee-7045578_1920.png" 
-              alt="Coffee background" 
-              className="absolute inset-0 w-full h-full object-cover z-[-1] opacity-30 mix-blend-overlay"
+            <Image
+              src="/images/zazufiane-coffee-7045578_1920.png"
+              alt="Coffee background"
+              fill
+              sizes="100vw"
+              className="object-cover z-[-1] opacity-30 mix-blend-overlay"
             />
           </div>
 

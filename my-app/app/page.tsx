@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ScrollScaleVideo from "./components/ScrollScaleVideo";
 import RevealOnScroll from "./components/RevealOnScroll";
 import GlideSection from "./components/GlideSection";
@@ -40,16 +41,19 @@ export default function Home() {
           <div className="max-w-4xl">
             <h1 className="text-xl sm:text-2xl lg:text-3xl font-normal tracking-tight leading-snug text-gray-900">
               Ship Fast. Build Smart.<br />
-              Scale Forever..
+              Scale Forever.
             </h1>
           </div>
 
           <div className="mt-8 lg:mt-auto w-full flex items-end justify-center">
             <div className="relative w-[90vw] max-w-6xl aspect-[16/9] overflow-hidden rounded-3xl shadow-2xl">
-              <img 
+              <Image
                 src="/images/silviagaudenzi-coffee-8478202_1920.jpg"
                 alt="Coffee hero background"
-                className="absolute inset-0 w-full h-full object-cover scale-110"
+                fill
+                priority
+                sizes="(max-width: 1152px) 90vw, 72rem"
+                className="object-cover scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/30" />
               <h2

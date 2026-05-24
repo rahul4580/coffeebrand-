@@ -1,9 +1,5 @@
 "use client";
 
-
-
-
-
 import { motion } from "framer-motion";
 
 export default function EditorialPortfolio() {
@@ -93,8 +89,8 @@ export default function EditorialPortfolio() {
                {/* 6 images and videos collection */}
                <img src="/images/quickmodel_images-anime-girl-9821144.png" className="w-full aspect-[4/3] object-cover rounded-lg" alt="Anime girl 1" />
                <img src="/images/quickmodel_images-anime-girl-9821145.png" className="w-full aspect-[4/3] object-cover rounded-lg" alt="Anime girl 2" />
-               <video src="/videos/sample-1.mp4" className="w-full aspect-[4/3] object-cover rounded-lg" autoPlay loop muted />
-               <video src="/videos/sample-2.mp4" className="w-full aspect-[4/3] object-cover rounded-lg" autoPlay loop muted />
+               <video src="/videos/311602_medium.mp4" className="w-full aspect-[4/3] object-cover rounded-lg" autoPlay loop muted playsInline />
+               <video src="/videos/hero.mp4" className="w-full aspect-[4/3] object-cover rounded-lg" autoPlay loop muted playsInline />
                <img src="https://images.unsplash.com/photo-1631545663704-585ee585fd44?auto=format&fit=crop&q=80&w=600" className="w-full aspect-[4/3] object-cover" alt="Bed 4" />
                <img src="https://images.unsplash.com/photo-1583847268964-b28e530eee3c?auto=format&fit=crop&q=80&w=600" className="w-full aspect-[4/3] object-cover" alt="Bed 5" />
             

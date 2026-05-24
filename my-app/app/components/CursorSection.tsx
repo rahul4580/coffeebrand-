@@ -85,7 +85,7 @@ export default function CursorSection() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const echoRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const loop = useCallback(() => {
+  const loop = useCallback(function tick() {
     const t = targetRef.current;
     const s = smoothRef.current;
     const lerp = (a: number, b: number, k: number) => a + (b - a) * k;
@@ -122,7 +122,7 @@ export default function CursorSection() {
       }
     }
 
-    rafRef.current = requestAnimationFrame(loop);
+    rafRef.current = requestAnimationFrame(tick);
   }, []);
 
   useEffect(() => {
@@ -216,7 +216,6 @@ export default function CursorSection() {
           >
             {CURSOR_IMAGES.map((src, i) => (
               <figure key={src} className={styles.cursorFigure}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <Image 
                   src={src} 
                   alt="" 

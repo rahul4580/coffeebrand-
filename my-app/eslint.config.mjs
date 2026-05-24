@@ -1,6 +1,6 @@
-import eslintConfigNext from 'eslint-config-next';
+import eslintConfigNext from "eslint-config-next";
 
-export default [
+const config = [
   ...eslintConfigNext,
   {
     ignores: [
@@ -10,4 +10,14 @@ export default [
       "next-env.d.ts",
     ],
   },
+  {
+    rules: {
+      // Intentional client-only mount guards for scroll/DOM effects
+      "react-hooks/set-state-in-effect": "off",
+      // Portfolio uses plain img/video in several animation sections
+      "@next/next/no-img-element": "off",
+    },
+  },
 ];
+
+export default config;
