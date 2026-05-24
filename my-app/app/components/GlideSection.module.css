@@ -1,0 +1,197 @@
+/* tutorial-05-glide.html layout + figure shell */
+
+.section {
+  --vh: 1vh;
+  --h0: 5.065rem;
+  --h1: 3.815rem;
+  --g-gap: 0.4rem;
+  --g-margin: clamp(0.8rem, 2vw, 2rem);
+  --c-black: #000000;
+  background: #808080;
+  color: #000;
+  padding-left: var(--g-margin);
+  padding-right: var(--g-margin);
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-bottom: calc(var(--vh, 1vh) * 80);
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  column-gap: var(--g-gap);
+  position: relative;
+}
+
+.note {
+  grid-column: 1 / -1;
+  grid-row-start: 1;
+  justify-self: center;
+  align-self: start;
+  text-align: center;
+  z-index: 40;
+  margin-top: var(--h0);
+  background-color: var(--c-black);
+  color: #fff;
+  padding: 0.35em 0.75em;
+  font-size: clamp(0.62rem, 1.2vw, 0.8rem);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.noteMobile {
+  display: inline;
+}
+
+@media (min-width: 1024px) {
+  .noteMobile {
+    display: none;
+  }
+}
+
+.noteDesktop {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .noteDesktop {
+    display: inline;
+  }
+}
+
+.copy {
+  grid-column: 3 / 13;
+  grid-row-start: 1;
+  justify-self: center;
+  align-self: start;
+  text-align: center;
+  z-index: 40;
+  margin-top: calc(var(--h1) * 2);
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  line-height: 1.3;
+  max-width: 52ch;
+}
+
+@media (min-width: 1024px) {
+  .copy {
+    grid-column: 6 / 10;
+  }
+}
+
+.figure {
+  grid-row-start: 2;
+  margin-top: calc(var(--vh, 1vh) * 10);
+  transform: translateZ(0);
+  clip-path: inset(0% 0% 0% 0%);
+  margin-left: 0;
+  margin-right: 0;
+  overflow: hidden;
+}
+
+.figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+.image1 {
+  grid-column: 1 / 3;
+}
+
+@media (min-width: 1024px) {
+  .image1 {
+    grid-column: 3 / 5;
+  }
+}
+
+.image2 {
+  grid-column: 3 / 6;
+}
+
+@media (min-width: 1024px) {
+  .image2 {
+    grid-column: 5 / 7;
+  }
+}
+
+.image3 {
+  grid-column: 6 / 10;
+}
+
+@media (min-width: 1024px) {
+  .image3 {
+    grid-column: 7 / 9;
+  }
+}
+
+.image4 {
+  grid-column: 10 / 13;
+}
+
+@media (min-width: 1024px) {
+  .image4 {
+    grid-column: 9 / 11;
+  }
+}
+
+.image5 {
+  grid-column: 13 / 15;
+}
+
+@media (min-width: 1024px) {
+  .image5 {
+    grid-column: 11 / 13;
+  }
+}
+
+.image1 {
+  aspect-ratio: 610 / 518;
+}
+
+.image2 {
+  aspect-ratio: 466 / 534;
+}
+
+.image3 {
+  aspect-ratio: 557 / 442;
+}
+
+.image4 {
+  aspect-ratio: 630 / 514;
+}
+
+.image5 {
+  aspect-ratio: 593 / 520;
+}
+
+@media (max-width: 1023px) {
+  .grid {
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+  }
+
+  .figure {
+    grid-column: 1 / -1 !important;
+    grid-row: auto;
+    margin-top: 1rem;
+  }
+
+  .copy {
+    grid-column: 1 / -1;
+    margin-top: calc(var(--h1) * 1.2);
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+
+  .note {
+    margin-top: 2rem;
+  }
+}

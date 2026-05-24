@@ -1,0 +1,125 @@
+/* tutorial-03-progress.html — scroll-driven --progress on sticky figure */
+
+.section {
+  --vh: 1vh;
+  --h0: 5.065rem;
+  --h1: 3.815rem;
+  --h3: 2.441rem;
+  --g-gap: 0.4rem;
+  --g-margin: clamp(0.8rem, 2vw, 2rem);
+  --c-grey-dark: #333333;
+
+  background: #808080;
+  color: #000;
+  padding-left: var(--g-margin);
+  padding-right: var(--g-margin);
+  position: relative;
+  min-height: 260vh;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  align-items: start;
+  column-gap: var(--g-gap);
+  position: relative;
+  min-height: 1024px;
+  /* --progress set inline 0–1 */
+}
+
+.copy {
+  grid-column: 3 / 13;
+  grid-row-start: 1;
+  justify-self: center;
+  align-self: start;
+  text-align: center;
+  z-index: 40;
+  margin-top: calc(var(--h1) * 2);
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  line-height: 1.35;
+  max-width: 65ch;
+}
+
+@media (min-width: 1024px) {
+  .copy {
+    grid-column: 6 / 10;
+  }
+}
+
+.figure {
+  margin: 0;
+  grid-column: 1 / 15;
+  grid-row-start: 1;
+  align-self: center;
+  height: calc(var(--vh, 1vh) * 40);
+  position: sticky;
+  top: calc(var(--vh, 1vh) * 30);
+  margin-bottom: calc(var(--vh, 1vh) * 30);
+  scale: calc(0.5 + var(--progress) * 0.5);
+  clip-path: rect(
+    calc(20% - var(--progress) * 20%) calc(90% + var(--progress) * 10%)
+      calc(80% + var(--progress) * 20%) calc(10% - var(--progress) * 10%) round
+      calc(var(--h3) - var(--progress) * var(--h3))
+  );
+  transform: translateZ(0);
+  margin-left: 0;
+  margin-right: 0;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .figure {
+    grid-column: 3 / 13;
+    top: calc(var(--vh, 1vh) * 15);
+    margin-bottom: calc(var(--vh, 1vh) * 15);
+    height: calc(var(--vh, 1vh) * 70);
+    clip-path: rect(
+      calc(20% - var(--progress) * 20%) calc(70% + var(--progress) * 30%)
+        calc(80% + var(--progress) * 20%) calc(30% - var(--progress) * 30%) round
+        calc(var(--h3) - var(--progress) * var(--h3))
+    );
+  }
+}
+
+.figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.line {
+  grid-column: 1 / 15;
+  grid-row-start: 1;
+  align-self: center;
+  position: relative;
+  display: block;
+  height: 1px;
+  background-color: var(--c-grey-dark);
+  margin-top: calc(var(--vh, 1vh) * 30);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+  .line {
+    margin-top: calc(var(--vh, 1vh) * 15);
+  }
+}
+
+.title {
+  grid-column: 1 / 15;
+  grid-row-start: 1;
+  align-self: end;
+  text-align: center;
+  position: relative;
+  font-size: clamp(2.5rem, 10vw, var(--h0));
+  font-weight: 400;
+  line-height: 1;
+  margin: 0;
+  padding-bottom: 0.15em;
+  pointer-events: none;
+}

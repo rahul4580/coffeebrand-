@@ -1,0 +1,508 @@
+/* ═══════════════════════════════════════════════════════════════
+   FinalSection – "Reality, by Design"  ·  Premium Animation CSS
+═══════════════════════════════════════════════════════════════ */
+
+/* ─── Keyframes ─── */
+@keyframes islandFloat {
+  0%, 100% { transform: translateY(0px) rotate(-0.4deg); }
+  50%       { transform: translateY(-16px) rotate(0.5deg); }
+}
+
+@keyframes grainShift {
+  0%   { transform: translate(0, 0); }
+  10%  { transform: translate(-2%, -2%); }
+  30%  { transform: translate(2%, 1%); }
+  50%  { transform: translate(-1%, 2%); }
+  70%  { transform: translate(1%, -1%); }
+  90%  { transform: translate(-2%, 1%); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.35; transform: scale(1) translateY(0); }
+  50%       { opacity: 0.6;  transform: scale(1.08) translateY(-20px); }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes boxDraw {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+
+/* ─── Root section ─── */
+.section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #f8f8f6;
+  color: #0a0a0a;
+  font-family: 'Courier New', Courier, monospace;
+  overflow: hidden;
+  padding-bottom: 4rem;
+}
+
+/* ─── Grain overlay ─── */
+.grain {
+  position: absolute; inset: 0;
+  z-index: 1; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  animation: grainShift 8s steps(2) infinite;
+}
+
+/* ─── Grid background ─── */
+.gridBg {
+  position: absolute; inset: 0;
+  z-index: 0; pointer-events: none;
+}
+
+/* ─── Radial glow ─── */
+.radialGlow {
+  position: absolute;
+  width: 800px; height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(180,200,255,0.18) 0%, transparent 70%);
+  top: 10%; left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none; z-index: 0;
+  animation: glowPulse 6s ease-in-out infinite;
+}
+
+/* ─── Particles ─── */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.45);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── Top bar ─── */
+.topBar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 2.5rem;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+.brandName {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  cursor: default;
+  transition: letter-spacing 0.3s;
+}
+
+.changeReality {
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  border: 1px solid rgba(0,0,0,0.35);
+  padding: 0.45rem 1.2rem;
+  text-transform: uppercase;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: inherit;
+  transition: background 0.2s, color 0.2s;
+}
+
+.localTime {
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-align: right;
+}
+
+.localTimeLabel {
+  font-size: 0.52rem;
+  opacity: 0.5;
+  margin-bottom: 0.1rem;
+  letter-spacing: 0.15em;
+}
+
+/* ─── Main 2-col grid ─── */
+.mainGrid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  padding: 2rem 2.5rem;
+  z-index: 5;
+}
+
+@media (max-width: 900px) {
+  .mainGrid { grid-template-columns: 1fr; }
+}
+
+/* ─── Left column ─── */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.descriptorWidget {
+  border: 1px solid rgba(0,0,0,0.12);
+  padding: 0.8rem 1rem;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(8px);
+}
+
+.descriptorLabel {
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  line-height: 1.8;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.descriptorTag {
+  font-size: 0.55rem;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+}
+
+.tagBox {
+  border: 1px solid #0a0a0a;
+  padding: 0.05rem 0.3rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* ─── Circle diagram ─── */
+.circleDiagram {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 240px;
+}
+
+.circleSvg {
+  width: 100%; height: 100%;
+}
+
+.islandCenter {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.islandFloat {
+  animation: islandFloat 4.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.islandSmall {
+  width: 130px !important;
+  height: auto !important;
+  filter: drop-shadow(0 10px 28px rgba(0,0,0,0.22));
+}
+
+/* ─── Video card ─── */
+.videoCard {
+  width: 100%;
+  max-width: 220px;
+  overflow: hidden;
+}
+
+.videoThumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.videoOverlay {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  color: rgba(255,255,255,0.7);
+}
+
+.videoGradient {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, transparent 30%, rgba(0,100,255,0.15));
+}
+
+.videoLabel {
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.75rem;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+/* ─── Core threads ─── */
+.coreThreads {
+  border-top: 1px solid rgba(0,0,0,0.1);
+  padding-top: 0.75rem;
+}
+
+.coreLabel {
+  font-size: 0.52rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.45;
+  margin-bottom: 0.75rem;
+}
+
+.coreItem {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.4rem 0.3rem;
+  border-radius: 2px;
+  cursor: default;
+  transition: background 0.2s;
+}
+
+.coreNum {
+  font-size: 0.55rem;
+  opacity: 0.4;
+  min-width: 1.5rem;
+}
+
+.coreTag {
+  font-size: 0.52rem;
+  opacity: 0.35;
+  letter-spacing: 0.04em;
+}
+
+.coreLabel2 {
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* ─── Right column ─── */
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 0.5rem;
+}
+
+/* ─── Headline ─── */
+.headline {
+  margin: 0;
+  font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.92;
+  perspective: 800px;
+}
+
+.headlineLine {
+  display: block;
+  font-size: clamp(2.2rem, 5.5vw, 5.5rem);
+  letter-spacing: -0.025em;
+  margin-bottom: 0.05em;
+  overflow: visible;
+}
+
+.starIcon {
+  display: inline-block;
+  font-size: 0.65em;
+  vertical-align: middle;
+  margin: 0 0.1em;
+}
+
+.chainIcon {
+  display: inline-block;
+  font-size: 0.55em;
+  vertical-align: middle;
+  margin-left: 0.2em;
+}
+
+.eyeIcon {
+  display: inline-block;
+  font-size: 0.9em;
+  margin: 0 0.15em;
+  vertical-align: middle;
+}
+
+/* ─── Boxed word ─── */
+.boxedWord {
+  display: inline;
+  border: 3px solid #0a0a0a;
+  padding: 0.04em 0.15em;
+  cursor: default;
+  transition: background 0.25s, color 0.25s;
+  position: relative;
+}
+
+/* ─── Body text ─── */
+.bodyText {
+  font-family: 'Arial', sans-serif;
+  font-size: clamp(1.1rem, 2.2vw, 1.9rem);
+  font-weight: 400;
+  line-height: 1.45;
+  color: rgba(10,10,10,0.82);
+  max-width: 700px;
+  overflow: visible;
+}
+
+/* ─── Arm card ─── */
+.armCard {
+  width: fit-content;
+}
+
+.armCardInner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.armCardText {
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  min-width: 80px;
+}
+
+.armPlaceholder {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 48px;
+}
+
+.armBar {
+  width: 10px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #0a0a0a 0%, rgba(10,10,10,0.3) 100%);
+}
+
+/* ─── Bottom row ─── */
+.bottomRow {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* ─── Floating card base ─── */
+.floatingCard {
+  border: 1px solid rgba(0,0,0,0.14);
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 2px;
+  overflow: hidden;
+  cursor: default;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transition: box-shadow 0.25s;
+}
+
+/* ─── Definition card ─── */
+.defCard {
+  min-width: 180px;
+  padding: 1rem;
+}
+
+.defCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.defCardBrand {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: default;
+}
+
+.defCardNum {
+  font-size: 0.6rem;
+  opacity: 0.45;
+}
+
+.defCardLine {
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  line-height: 1.9;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+/* ─── Bio card ─── */
+.bioCard {
+  min-width: 220px;
+  max-width: 260px;
+  padding: 1rem;
+}
+
+.bioCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.bioCardTitle {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.closeBtn {
+  width: 18px; height: 18px;
+  border: 1px solid rgba(0,0,0,0.25);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.5rem; cursor: pointer;
+}
+
+.bioCardText {
+  font-size: 0.58rem;
+  line-height: 1.9;
+  letter-spacing: 0.03em;
+  opacity: 0.72;
+  margin-bottom: 0.75rem;
+  font-family: 'Arial', sans-serif;
+}
+
+.bioLinks {
+  display: flex; gap: 0.4rem; flex-wrap: wrap;
+}
+
+.bioLink {
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  border: 1px solid rgba(0,0,0,0.2);
+  padding: 0.22rem 0.55rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-block;
+  transition: background 0.15s, color 0.15s;
+}
+
+/* ─── Bottom line ─── */
+.bottomLine {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: rgba(0,0,0,0.15);
+  transform-origin: left;
+}
